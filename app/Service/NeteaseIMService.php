@@ -55,7 +55,7 @@ class NeteaseIMService
             return false;
         }
 
-        if (!$resp && $resp->code) {
+        if (!$resp && $resp->code != 200) {
 
         }
 
