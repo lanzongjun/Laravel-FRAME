@@ -37,22 +37,17 @@ class ExceptionHandle extends Command
      */
     public function handle()
     {
-        $num = 0;
         try {
-            echo 1/$num;
-        } catch (\Exception $e) {
-            echo $e->getMessage(),"\n";
+            test();
+        } catch (\Throwable $e) {
+            echo  $e->getMessage(),"\n";
         }
 
-        echo "over\n";
-
-        print_r(error_get_last());
-
-        register_shutdown_function('zyfshutdownfunc');
+        try {
+            test();
+        } catch (\Error $e) {
+            echo $e->getMessage(),"\n";
+        }
     }
 
-    public function zyfshutdownfunc()
-    {
-        print_r(error_get_last());
-    }
 }
